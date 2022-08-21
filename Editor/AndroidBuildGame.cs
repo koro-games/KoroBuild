@@ -47,8 +47,7 @@ public class AndroidBuildGame
     public static void GenericSetting()
     {
         PlayerSettings.Android.useCustomKeystore = false;
-        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
-        PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel31;
+        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
     }
 }
 
