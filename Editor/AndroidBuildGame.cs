@@ -86,7 +86,17 @@ public class AndroidBuildGame
     public static void GenericSetting()
     {
         SignBuild();
+        VersionSet();
         PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
+    }
+
+    private static void VersionSet()
+    {
+        var version = 0;
+        if (int.TryParse(GetArg("-version"), out version))
+        {
+            PlayerSettings.Android.bundleVersionCode = version;
+        }
     }
 }
 
