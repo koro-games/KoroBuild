@@ -93,7 +93,7 @@ public class AndroidBuildGame
     private static void VersionSet()
     {
         var version = 0;
-        if (int.TryParse(GetArg("-version"), out version))
+        if (int.TryParse(GetArg("-versionCode"), out version))
         {
             PlayerSettings.Android.bundleVersionCode = version;
         }
