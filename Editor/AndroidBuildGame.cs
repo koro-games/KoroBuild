@@ -44,6 +44,17 @@ public class AndroidBuildGame
         return scenesPaths;
     }
 
+    public static void Sign(string alias, string pass)
+    {
+        PlayerSettings.Android.useCustomKeystore = true;
+
+        PlayerSettings.Android.keystoreName = "/Users/user/Downloads/Ko_Studio_keystore.keystore";
+        PlayerSettings.Android.keystorePass = pass;
+
+        PlayerSettings.Android.keyaliasName = alias;
+        PlayerSettings.Android.keyaliasPass = pass;
+    }
+
     public static void GenericSetting()
     {
         PlayerSettings.Android.useCustomKeystore = false;
