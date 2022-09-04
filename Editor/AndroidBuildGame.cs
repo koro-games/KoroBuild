@@ -44,7 +44,26 @@ public class AndroidBuildGame
         return scenesPaths;
     }
 
-    public static void Sign(string alias, string pass)
+    public static void SignBuild()
+    {
+        Sign(GetArg("-alias"), GetArg("-pass"));
+    }
+
+
+    private static string GetArg(string name)
+    {
+        var args = System.Environment.GetCommandLineArgs();
+        for (int i = 0; i < args.Length; i++)
+        {
+            if (args[i] == name && args.Length > i + 1)
+            {
+                return args[i + 1];
+            }
+        }
+        return null;
+    }
+
+    private static void Sign(string alias, string pass)
     {
         PlayerSettings.Android.useCustomKeystore = true;
 
