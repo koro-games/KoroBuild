@@ -46,7 +46,16 @@ public class AndroidBuildGame
 
     public static void SignBuild()
     {
-        Sign(GetArg("-alias"), GetArg("-pass"));
+        var alias = GetArg("-alias");
+        var pass = GetArg("-pass");
+        if (alias == null || pass == null)
+        {
+            Sign(alias, pass);
+        }
+        else
+        {
+            PlayerSettings.Android.useCustomKeystore = false;
+        }
     }
 
 
@@ -76,7 +85,7 @@ public class AndroidBuildGame
 
     public static void GenericSetting()
     {
-        PlayerSettings.Android.useCustomKeystore = false;
+        SignBuild();
         PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
     }
 }
