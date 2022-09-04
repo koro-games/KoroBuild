@@ -48,7 +48,7 @@ public class AndroidBuildGame
     {
         var alias = GetArg("-alias");
         var pass = GetArg("-pass");
-        if (alias == null || pass == null)
+        if (alias != null && pass != null)
         {
             Sign(alias, pass);
         }
