@@ -11,7 +11,9 @@ public class AndroidBuildGame
     [MenuItem("Tools/KoroBuild/Android/BuildExport")]
     public static void BuildExportProject()
     {
-
+#if DEBUG_MODE
+        throw new Exception("Cannot export bundle in DEBUG_MODE");
+#endif
         GenericSetting();
         EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
         BuildPipeline.BuildPlayer(GetScenes(), $"./Builds/Android-Export-Project", BuildTarget.Android, BuildOptions.None);
