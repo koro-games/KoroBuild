@@ -45,6 +45,12 @@ public class AndroidBuildGame
 
     public static void SignBuild()
     {
+
+#if DEBUG_MODE
+            PlayerSettings.Android.useCustomKeystore = false;
+            return;
+#endif
+
         var alias = GetArg("-alias");
         var pass = GetArg("-pass");
         if (alias != null && pass != null)
