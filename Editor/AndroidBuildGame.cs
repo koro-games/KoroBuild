@@ -92,6 +92,7 @@ public class AndroidBuildGame
     {
         SignBuild();
         VersionSet();
+        SetAndroidBuildScriptingBackend();
         PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
     }
 
@@ -101,6 +102,22 @@ public class AndroidBuildGame
         if (int.TryParse(GetArg("-versionCode"), out version))
         {
             PlayerSettings.Android.bundleVersionCode = version;
+        }
+    }
+
+    private static void SetAndroidBuildScriptingBackend()
+    {
+        var version = 0;
+        if (int.TryParse(GetArg("-buildMono"), out version))
+        {
+            if (version == 1)
+            {
+                PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.Mono2x);
+            }
+            else
+            {
+                PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+            }
         }
     }
 }
