@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.IO;
 
 public class AndroidBuildGame
 {
@@ -81,7 +82,13 @@ public class AndroidBuildGame
     {
         PlayerSettings.Android.useCustomKeystore = true;
 
-        PlayerSettings.Android.keystoreName = "/Users/user/Downloads/Ko_Studio_keystore.keystore";
+        var path = "/Users/user/Downloads/Ko_Studio_keystore.keystore";
+        if (File.Exists("Assets/Editor/KeystorePathReplace.txt"))
+        {
+            Debug.Log("Replace keystore path");
+            path = File.ReadAllText("Assets/Editor/KeystorePathReplace.txt");
+        }
+        PlayerSettings.Android.keystoreName = path;
         PlayerSettings.Android.keystorePass = pass;
 
         PlayerSettings.Android.keyaliasName = alias;
