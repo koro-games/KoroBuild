@@ -78,6 +78,18 @@ public class AndroidBuildGame
         return null;
     }
 
+    [MenuItem("Tools/KoroBuild/Android/KeyStoreCheck")]
+    private static void KeyStoreCheck()
+    {
+        var path = "/Users/user/Downloads/Ko_Studio_keystore.keystore";
+        if (File.Exists("Assets/Editor/KeystorePathReplace.txt"))
+        {
+            Debug.Log("Replace keystore path");
+            path = File.ReadAllText("Assets/Editor/KeystorePathReplace.txt");
+        }
+        Debug.Log(path);
+    }
+
     private static void Sign(string alias, string pass)
     {
         PlayerSettings.Android.useCustomKeystore = true;
@@ -88,6 +100,7 @@ public class AndroidBuildGame
             Debug.Log("Replace keystore path");
             path = File.ReadAllText("Assets/Editor/KeystorePathReplace.txt");
         }
+
         PlayerSettings.Android.keystoreName = path;
         PlayerSettings.Android.keystorePass = pass;
 
