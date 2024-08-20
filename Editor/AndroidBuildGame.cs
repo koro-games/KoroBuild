@@ -113,7 +113,7 @@ public class AndroidBuildGame
         SignBuild();
         VersionSet();
         SetAndroidBuildScriptingBackend();
-        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
+        //PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
     }
 
     private static void VersionSet()
