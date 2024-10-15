@@ -92,6 +92,9 @@ public class AndroidBuildGame
 
     private static void Sign(string alias, string pass)
     {
+        //this use for situation when pabisher for some reasone use space insted of _ in alias
+        alias = alias.Replace("_", " ");
+
         PlayerSettings.Android.useCustomKeystore = true;
 
         var path = "/Users/user/Downloads/Ko_Studio_keystore.keystore";
